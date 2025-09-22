@@ -1,26 +1,14 @@
 
-const getData=async ()=>{
-    let res=await fetch('https://dummyjson.com/posts');
-    let data=await res.json();
-    return data['posts'];
-}
+import React from 'react';
+import Menu from "@/components/menu";
 
 
 const Page = async () => {
 
-    let data=await getData();
     return (
         <div>
-            {
-                data.map((item,index)=>{
-                    return (
-                        <div key={index}>
-                            <p>{item['id']+": "+item['body']}</p>
-                            <br/>
-                        </div>
-                    )
-                })
-            }
+            <Menu/>
+           <h1>this is home page</h1>
         </div>
     );
 };
