@@ -1,11 +1,30 @@
-import React from 'react';
-import styles from './page.module.css'
+'use client'
+import React, {useEffect, useState} from 'react';
+
 const Page = () => {
+
+    const [data, setData] = useState([])
+    useEffect(() => {
+        (async ()=>{
+           let res=await fetch('https://dummyjson.com/posts');
+           let data=await res.json();
+           console.log(data);
+           setData(data['posts']);
+        })()
+    }, []);
     return (
         <div>
-            <h1 className="head-line">This style from global.css file</h1>
-            <h4 className={styles.headLine}>This style from page.module.css file</h4>
-            <img src="/images/nex.webp" alt="images"/>
+            {
+                data.map((item,index)=>{
+                    return (
+                        <div key={index}>
+                            <p>{item['title']}</p>
+                            <p>{item['body']}</p>
+                            <br/>
+                        </div>
+                    )
+                })
+            }
         </div>
     );
 };
