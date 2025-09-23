@@ -1,3 +1,14 @@
+
 .head-line{
     color:red;
+}
+
+
+.active-link{
+    color:green !important;
+    text-decoration: none !important;
+}
+.pending-link{
+    color:red !important;
+    text-decoration: none !important;
 }
