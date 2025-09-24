@@ -7,6 +7,7 @@ const Page = () => {
             <Menu/>
             <h1 className="head-line">This is about page</h1>
             <h4 className={styles.headLine}>this style from page.model.css</h4>
+            <img src={"images/nex.webp"} alt="image"/>
         </div>
     );
 };
