@@ -1,31 +1,47 @@
 import {NextRequest} from "next/server";
 import {NextResponse} from "next/server";
-import {headers} from "next/headers";
-//working with Reqeust
+import {redirect} from "next/navigation";
+
+
+
 export async function GET(req,res){
-    const {searchParams} = new URL(req.url);
-    const name=searchParams.get('name');
-    const id=searchParams.get('Id');
-    return NextResponse.json({name:name,id:id})
+    return NextResponse.json(
+        {
+            message:"Simple json response and status code"
+        },
+        {
+            status:400
+        }
+    )
 }
+
+
 export async function POST(req,res){
-     const JsonBody=await req.json();
-     const name=JsonBody.name;
-     const city=JsonBody.city;
-    return NextResponse.json({name:name,city:city})
+ return NextResponse.json(
+     {
+         message:"Working with Headers(Response)"
+     },
+     {
+         status:201,
+         headers:{department:"CSE",session:'2019-2020',city:"chattogram"}
+     }
+ )
 }
 export async function PUT(req,res){
-    const formData= await req.formData();
-    const name=formData.get('name');
-    const department=formData.get('Department');
-    return NextResponse.json({name:name,department:department});
-}
-export async function PATCH(req,res){
-    const Header=headers();
-    const firstName=Header.get('firstName');
-    const lastName=Header.get('lastName');
-    return NextResponse.json({firstName:firstName,lastName:lastName});
+    return NextResponse.json(
+        {
+            message:"Working with Cookies(response)"
+        },
+        {
+            status:201,
+            headers:{'set-cookie':'token=123-xyz'}
+        }
+
+    )
 }
 export async function DELETE(req,res){
-    return NextResponse.json({name:"I am DELETE"})
+    redirect('/')
+}
+export async function PATCH(req,res){
+
 }
