@@ -1,5 +1,6 @@
 import {NextRequest} from "next/server";
 import {NextResponse} from "next/server";
+import {headers} from "next/headers";
 
 export async function GET(req,res){
     const {searchParams} = new URL(req.url);
@@ -20,7 +21,10 @@ export async function PUT(req,res){
     return NextResponse.json({name:name,department:department});
 }
 export async function PATCH(req,res){
-    return NextResponse.json({name:"I am PATCH"})
+    const Header=headers();
+    const firstName=Header.get('firstName');
+    const lastName=Header.get('lastName');
+    return NextResponse.json({firstName:firstName,lastName:lastName});
 }
 export async function DELETE(req,res){
     return NextResponse.json({name:"I am DELETE"})
