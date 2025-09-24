@@ -3,12 +3,15 @@ import {NextResponse} from "next/server";
 
 export async function GET(req,res){
     const {searchParams} = new URL(req.url);
-    let name=searchParams.get('name');
-    let id=searchParams.get('Id');
+    const name=searchParams.get('name');
+    const id=searchParams.get('Id');
     return NextResponse.json({name:name,id:id})
 }
 export async function POST(req,res){
-    return NextResponse.json({name:"I am POST"})
+     const JsonBody=await req.json();
+     const name=JsonBody.name;
+     const city=JsonBody.city;
+    return NextResponse.json({name:name,city:city})
 }
 export async function PUT(req,res){
     return NextResponse.json({name:"I am PUT"})
