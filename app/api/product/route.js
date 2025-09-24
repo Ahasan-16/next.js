@@ -14,7 +14,10 @@ export async function POST(req,res){
     return NextResponse.json({name:name,city:city})
 }
 export async function PUT(req,res){
-    return NextResponse.json({name:"I am PUT"})
+    const formData= await req.formData();
+    const name=formData.get('name');
+    const department=formData.get('Department');
+    return NextResponse.json({name:name,department:department});
 }
 export async function PATCH(req,res){
     return NextResponse.json({name:"I am PATCH"})
