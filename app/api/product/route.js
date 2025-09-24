@@ -2,7 +2,10 @@ import {NextRequest} from "next/server";
 import {NextResponse} from "next/server";
 
 export async function GET(req,res){
-    return NextResponse.json({name:"I am GET"})
+    const {searchParams} = new URL(req.url);
+    let name=searchParams.get('name');
+    let id=searchParams.get('Id');
+    return NextResponse.json({name:name,id:id})
 }
 export async function POST(req,res){
     return NextResponse.json({name:"I am POST"})
