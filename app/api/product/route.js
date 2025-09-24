@@ -1,7 +1,7 @@
 import {NextRequest} from "next/server";
 import {NextResponse} from "next/server";
 import {headers} from "next/headers";
-
+//working with Reqeust
 export async function GET(req,res){
     const {searchParams} = new URL(req.url);
     const name=searchParams.get('name');
