@@ -1,16 +1,21 @@
 import {NextRequest} from "next/server";
 import {NextResponse} from "next/server";
 import {redirect} from "next/navigation";
+import {headers} from "next/headers";
 
 
 
 export async function GET(req,res){
+    const headerList=headers();//ei gola dara reqest er header handle kora jabe,responser e null dekabe
+    const token= headerList.get('token');
+
     return NextResponse.json(
         {
-            message:"Simple json response and status code"
+            message:"Simple json response and status code",
+            token:token
         },
         {
-            status:400
+            status:200
         }
     )
 }
